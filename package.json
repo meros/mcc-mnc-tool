@@ -1,6 +1,6 @@
 {
   "name": "mcc-mnc-tool",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI tool to fetch and parse official Mobile Country Code (MCC) and Mobile Network Code (MNC) data from ITU-T E.212",
   "main": "index.mjs",
   "bin": {
