@@ -30,13 +30,11 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import fs from "fs/promises";
 import mammoth from "mammoth";
-import path from "path";
-import { fileURLToPath } from "url";
 
 const CONFIG = {
   BASE_URL: 'https://www.itu.int',
   DOCS_PATH: '/pub/T-SP-E.212B',
-  DEFAULT_OUTPUT: 'data.json'
+  DEFAULT_OUTPUT: './data.json'
 };
 
 const colors = {
@@ -201,10 +199,7 @@ async function main() {
   
   try {
     const outputPath = parseArgs();
-    const finalPath = outputPath || path.join(
-      path.dirname(fileURLToPath(import.meta.url)),
-      CONFIG.DEFAULT_OUTPUT
-    );
+    const finalPath = outputPath || CONFIG.DEFAULT_OUTPUT;
 
     console.log(colors.bold('\n📱 MCC/MNC Data Updater\n'));
 
