@@ -56,19 +56,25 @@ class SimpleSpinner {
   }
 
   start() {
-    process.stdout.write('\n');
-    this.interval = setInterval(() => {
-      process.stdout.clearLine(0);
-      process.stdout.cursorTo(0);
-      process.stdout.write(`${this.frames[this.currentFrame]} ${this.text}`);
-      this.currentFrame = ++this.currentFrame % this.frames.length;
-    }, 80);
+    if (process.stdout.isTTY) {
+      process.stdout.write('\n');
+      this.interval = setInterval(() => {
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+        process.stdout.write(`${this.frames[this.currentFrame]} ${this.text}`);
+        this.currentFrame = ++this.currentFrame % this.frames.length;
+      }, 80);
+    }
   }
 
   stop(success = true) {
-    clearInterval(this.interval);
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    if (process.stdout.isTTY) {
+      process.stdout.clearLine(0);
+      process.stdout.cursorTo(0);
+    }
     const symbol = success ? '✓' : '✗';
     const color = success ? colors.green : colors.red;
     process.stdout.write(`${color(symbol)} ${this.text}\n`);
