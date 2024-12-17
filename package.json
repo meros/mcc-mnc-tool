@@ -1,0 +1,26 @@
+{
+  "name": "mcc-mnc-tool",
+  "version": "1.0.0",
+  "description": "CLI tool to fetch and parse official Mobile Country Code (MCC) and Mobile Network Code (MNC) data from ITU-T E.212",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Schrab <alexander.schrab@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "mammoth": "^1.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mcc-mnc-tool.git"
+  },
+  "keywords": [
+    "MCC",
+    "MNC",
+    "tool",
+    "telecom"
+  ]
+}
