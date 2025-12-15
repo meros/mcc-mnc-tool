@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { spawnSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const testOutputPath = path.join(__dirname, 'test-output.json');
@@ -15,7 +16,6 @@ test('MCC/MNC tool - structure validation', async (t) => {
   } catch {}
 
   // Run script
-  const { spawnSync } = await import('child_process');
   const result = spawnSync('node', ['index.mjs', '--output', testOutputPath], {
     stdio: 'inherit'
   });
@@ -44,7 +44,6 @@ test('MCC/MNC tool - content validation', async (t) => {
   } catch {}
 
   // Run script
-  const { spawnSync } = await import('child_process');
   const result = spawnSync('node', ['index.mjs', '--output', testOutputPath], {
     stdio: 'inherit'
   });
@@ -70,12 +69,12 @@ test('MCC/MNC tool - content validation', async (t) => {
   for (const [areaKey, entries] of Object.entries(actual.areas)) {
     assert.ok(Array.isArray(entries), `Area "${areaKey}" should be an array`);
     for (const entry of entries) {
-      assert.ok(entry.name, `Entry should have name in area "${areaKey}"`);
-      assert.ok(entry.mcc, `Entry should have mcc in area "${areaKey}"`);
-      assert.ok(entry.mnc, `Entry should have mnc in area "${areaKey}"`);
-      assert.strictEqual(typeof entry.name, 'string', 'Entry name should be string');
-      assert.strictEqual(typeof entry.mcc, 'string', 'Entry mcc should be string');
-      assert.strictEqual(typeof entry.mnc, 'string', 'Entry mnc should be string');
+      assert.strictEqual(typeof entry.name, 'string', `Entry name should be string in area "${areaKey}"`);
+      assert.strictEqual(typeof entry.mcc, 'string', `Entry mcc should be string in area "${areaKey}"`);
+      assert.strictEqual(typeof entry.mnc, 'string', `Entry mnc should be string in area "${areaKey}"`);
+      assert.ok(entry.name.length > 0, `Entry name should not be empty in area "${areaKey}"`);
+      assert.ok(entry.mcc.length > 0, `Entry mcc should not be empty in area "${areaKey}"`);
+      assert.ok(entry.mnc.length > 0, `Entry mnc should not be empty in area "${areaKey}"`);
     }
   }
 
