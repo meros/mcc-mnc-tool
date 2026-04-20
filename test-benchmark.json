@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "generated": "2024-01-01T00:00:00.000Z",
+    "source": "https://www.itu.int/pub/T-SP-E.212B-202401-I/en",
+    "etag": "\"benchmark\""
+  },
+  "areas": {
+    "united states": [
+      {
+        "name": "Verizon Wireless",
+        "mcc": "310",
+        "mnc": "004"
+      },
+      {
+        "name": "AT&T Mobility",
+        "mcc": "310",
+        "mnc": "410"
+      }
+    ],
+    "canada": [
+      {
+        "name": "Rogers Wireless",
+        "mcc": "302",
+        "mnc": "720"
+      }
+    ],
+    "united kingdom": [
+      {
+        "name": "Vodafone",
+        "mcc": "234",
+        "mnc": "015"
+      }
+    ]
+  },
+  "areaNames": [
+    "United States",
+    "Canada",
+    "United Kingdom"
+  ]
+}
