@@ -1,4 +1,6 @@
-# MCC/MNC Data Tool 📱
+# MCC/MNC Data Tool
+
+[![npm](https://img.shields.io/npm/v/mcc-mnc-tool)](https://www.npmjs.com/package/mcc-mnc-tool)
 
 Simple CLI tool to fetch and parse the latest MCC/MNC data from ITU-T E.212 documents.
 
@@ -9,20 +11,27 @@ This tool automatically:
 - Extracts Mobile Country Codes (MCC) and Mobile Network Codes (MNC)
 - Saves the data in a structured JSON format
 
+The ITU publishes the list as a Word document. This tool, written in December 2024, turns it into JSON.
+
 ## Installation
 
-```bash
-# Clone repository
-git clone https://github.com/username/mcc-tool.git
-cd mcc-tool
+Run it without installing:
 
-# Install dependencies
+```bash
+npx mcc-mnc-tool
+```
+
+Or clone the repository:
+
+```bash
+git clone https://github.com/meros/mcc-mnc-tool.git
+cd mcc-mnc-tool
 npm install
 ```
 
 ## Usage
 
-### Basic usage with default output path:
+### Basic usage (writes `./data.json`):
 
 ```bash
 node index.mjs
@@ -43,7 +52,7 @@ node index.mjs --help
 ### Using npx:
 
 ```bash
-npx mcc-mnc-tool
+npx mcc-mnc-tool --output ./mcc-mnc.json
 ```
 
 ## Output Format
@@ -75,22 +84,24 @@ The tool generates a JSON file with the following structure:
 
 ## Requirements
 
-- Node.js 18 or later
+- Node.js 20.18.1 or later (required by cheerio 1.2)
 - Internet connection to fetch ITU documents
 
 ## Development
 
-To contribute:
+```bash
+npm test
+```
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The test runs the tool against the live ITU website, so it needs an internet connection and fails if the ITU page changes.
+
+## Status
+
+Version 1.0.8 is published on npm. If the ITU changes its page or document layout, the parser will need an update.
 
 ## License
 
-MIT License - see LICENSE file for details.
+MIT. See [LICENSE](LICENSE).
 
 ## Author
 
