@@ -74,7 +74,7 @@ npm test            # unit tests, offline
 npm run test:live   # end-to-end run against the live ITU website
 ```
 
-CI runs the unit tests on Node 22 and 24 for each push and pull request. Once a week, it runs the live test, so a layout change at the ITU shows up as a failed run. A GitHub release publishes the package to npm.
+CI runs the unit tests on Node 22 and 24 for each push and pull request. Once a week, it runs the live test, so a layout change at the ITU shows up as a failed run. A GitHub release publishes the package to npm through npm trusted publishing, so the repo stores no npm token.
 
 ## Status
 

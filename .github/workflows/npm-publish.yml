@@ -1,14 +1,17 @@
 # Publishes to npm when a GitHub release is created.
+# Uses npm trusted publishing (OIDC): no npm token is stored in the repo.
+# The package's trusted publisher on npmjs.com must name this workflow file.
 
 name: Publish to npm
 
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 permissions:
   contents: read
-  id-token: write # npm provenance
+  id-token: write # OIDC for trusted publishing and provenance
 
 jobs:
   publish:
@@ -19,9 +22,8 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org/
+      - run: npm --version # trusted publishing needs npm 11.5.1 or later
       - run: npm ci
       - run: npm test
       - run: npm run test:live
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      - run: npm publish --access public
