@@ -1,29 +1,37 @@
 {
   "name": "mcc-mnc-tool",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "CLI tool to fetch and parse official Mobile Country Code (MCC) and Mobile Network Code (MNC) data from ITU-T E.212",
-  "main": "index.mjs",
+  "type": "module",
+  "exports": "./lib.mjs",
   "bin": {
     "mcc-mnc-tool": "index.mjs"
   },
+  "files": [
+    "index.mjs",
+    "lib.mjs"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "test": "node test.mjs"
+    "test": "node --test test/parse.test.mjs",
+    "test:live": "node --test test/live.test.mjs"
   },
   "author": "Alexander Schrab <alexander.schrab@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "axios": "^1.15.0",
-    "cheerio": "^1.2.0",
-    "mammoth": "^1.12.0"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/meros/mcc-mnc-tool.git"
+    "url": "git+https://github.com/meros/mcc-mnc-tool.git"
   },
+  "bugs": "https://github.com/meros/mcc-mnc-tool/issues",
+  "homepage": "https://github.com/meros/mcc-mnc-tool#readme",
   "keywords": [
-    "MCC",
-    "MNC",
-    "tool",
-    "telecom"
+    "mcc",
+    "mnc",
+    "itu",
+    "e212",
+    "telecom",
+    "mobile-network-code"
   ]
 }

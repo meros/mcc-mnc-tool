@@ -1,108 +1,85 @@
 # MCC/MNC Data Tool
 
 [![npm](https://img.shields.io/npm/v/mcc-mnc-tool)](https://www.npmjs.com/package/mcc-mnc-tool)
+[![CI](https://github.com/meros/mcc-mnc-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/meros/mcc-mnc-tool/actions/workflows/ci.yml)
 
-Simple CLI tool to fetch and parse the latest MCC/MNC data from ITU-T E.212 documents.
+A CLI and library that downloads the official list of Mobile Country Codes (MCC) and Mobile Network Codes (MNC) from the ITU and saves it as JSON.
 
-## About
+The ITU publishes the list as a Word document, the annex to Recommendation ITU-T E.212 ("E.212B"). This tool finds the newest edition, downloads the English `.docx` and reads the table in it. It has no dependencies: it unzips the document with Node's built-in `zlib` and reads the Word XML directly.
 
-This tool automatically:
-- Downloads the latest E.212 document from ITU website
-- Extracts Mobile Country Codes (MCC) and Mobile Network Codes (MNC)
-- Saves the data in a structured JSON format
-
-The ITU publishes the list as a Word document. This tool, written in December 2024, turns it into JSON.
-
-## Installation
+## Usage
 
 Run it without installing:
 
 ```bash
-npx mcc-mnc-tool
-```
-
-Or clone the repository:
-
-```bash
-git clone https://github.com/meros/mcc-mnc-tool.git
-cd mcc-mnc-tool
-npm install
-```
-
-## Usage
-
-### Basic usage (writes `./data.json`):
-
-```bash
-node index.mjs
-```
-
-### Specify custom output path:
-
-```bash
-node index.mjs --output ./custom-path.json
-```
-
-### Show help:
-
-```bash
-node index.mjs --help
-```
-
-### Using npx:
-
-```bash
+npx mcc-mnc-tool                          # writes ./data.json
 npx mcc-mnc-tool --output ./mcc-mnc.json
 ```
 
-## Output Format
+Options:
 
-The tool generates a JSON file with the following structure:
+| Option | Description |
+|---|---|
+| `--output`, `-o` | Output file path (default: `./data.json`) |
+| `--version`, `-v` | Show the version |
+| `--help`, `-h` | Show help |
+
+Set `NO_COLOR=1` to turn off colors. Colors are also off when the output is not a terminal.
+
+### As a library
+
+```js
+import { fetchMccMnc } from "mcc-mnc-tool";
+
+const data = await fetchMccMnc();
+console.log(data.areas.sweden);
+```
+
+`parseDocx(buffer)` parses a `.docx` that you already have.
+
+## Output format
 
 ```json
 {
-    "metadata": {
-        "generated": "2024-03-15T12:34:56.789Z",
-        "source": "https://www.itu.int/...",
-        "etag": "\"abc123\""
-    },
-    "areas": {
-        "united states": [
-            {
-                "name": "Verizon Wireless",
-                "mcc": "310",
-                "mnc": "004"
-            }
-        ]
-    },
-    "areaNames": [
-        "United States",
-        "Canada"
+  "metadata": {
+    "generated": "2026-10-08T19:16:10.412Z",
+    "source": "https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.212B-2023-MSW-E.docx",
+    "etag": "\"714dc962fe16da1:0\""
+  },
+  "areas": {
+    "afghanistan": [
+      { "name": "AWCC", "mcc": "412", "mnc": "01" }
     ]
+  },
+  "areaNames": ["Afghanistan", "Albania"]
 }
 ```
 
+- `areas` is keyed by the area name in lower case. `areaNames` keeps the names as the document prints them, in document order.
+- `mcc` and `mnc` are strings, so leading zeros stay (`"01"`).
+- An MCC/MNC pair can occur in more than one area when networks are shared, for example `208 01` in France and Monaco.
+- The tool reads only the main list. It does not read the other tables in the document, such as the shared MCC 901 networks.
+
 ## Requirements
 
-- Node.js 20.18.1 or later (required by cheerio 1.2)
-- Internet connection to fetch ITU documents
+- Node.js 22 or later
+- Internet access to www.itu.int
 
 ## Development
 
 ```bash
-npm test
+git clone https://github.com/meros/mcc-mnc-tool.git
+cd mcc-mnc-tool
+npm test            # unit tests, offline
+npm run test:live   # end-to-end run against the live ITU website
 ```
 
-The test runs the tool against the live ITU website, so it needs an internet connection and fails if the ITU page changes.
+CI runs the unit tests on Node 22 and 24 for each push and pull request. Once a week, it runs the live test, so a layout change at the ITU shows up as a failed run. A GitHub release publishes the package to npm.
 
 ## Status
 
-Version 1.0.8 is published on npm. If the ITU changes its page or document layout, the parser will need an update.
+Maintained. The ITU publishes a new edition every few years, with amendments in its Operational Bulletin in between. This tool reads the edition document only, not the amendments.
 
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-## Author
-
-Alexander Schrab

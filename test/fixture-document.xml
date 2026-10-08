@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>
+<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/></w:tblPr><w:tr><w:tc><w:p><w:r><w:drawing/></w:r></w:p></w:tc></w:tr></w:tbl>
+<w:p><w:r><w:t>List of Mobile Network Codes</w:t></w:r></w:p>
+<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/></w:tblPr>
+<w:tr><w:trPr><w:tblHeader/></w:trPr><w:tc><w:p><w:r><w:t>Country or Geographical Area</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>Networks</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>MCC + MNC codes</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr w:rsidR="002C57EF"><w:trPr><w:trHeight w:val="262"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="2874" w:type="dxa"/><w:vMerge w:val="restart"/></w:tcPr><w:p><w:r><w:t>Afghanistan</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="4536" w:type="dxa"/></w:tcPr><w:p/></w:tc><w:tc><w:tcPr><w:tcW w:w="2303" w:type="dxa"/></w:tcPr><w:p/></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p><w:r><w:t>AWCC</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>412 01</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p><w:r><w:t>Ro</w:t></w:r><w:r><w:t>shan</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t xml:space="preserve">412 </w:t></w:r><w:r><w:t>20</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge w:val="restart"/></w:tcPr><w:p><w:r><w:t>Georgia</w:t></w:r></w:p></w:tc><w:tc><w:p/></w:tc><w:tc><w:p/></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p><w:r><w:t xml:space="preserve">GLOBALCELL  LTD</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>282 07</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p><w:r><w:t>AT&amp;T Georgia</w:t></w:r></w:p><w:p><w:r><w:t>(test)</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>282 99</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge w:val="restart"/></w:tcPr><w:p><w:r><w:t>Kosovo</w:t></w:r><w:r><w:rPr><w:rStyle w:val="FootnoteReference"/></w:rPr><w:footnoteReference w:customMarkFollows="1" w:id="1"/></w:r><w:r><w:t>*</w:t></w:r></w:p></w:tc><w:tc><w:p/></w:tc><w:tc><w:p/></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p><w:r><w:t>Telecom of Kosovo J.S.C.</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>221 01</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge w:val="restart"/></w:tcPr><w:p><w:r><w:t>Türkiye</w:t></w:r></w:p></w:tc><w:tc><w:p/></w:tc><w:tc><w:p/></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge/></w:tcPr><w:p/></w:tc><w:tc><w:p/></w:tc><w:tc><w:p/></w:tc></w:tr>
+</w:tbl>
+<w:tbl><w:tr><w:tc><w:p><w:r><w:t>Networks</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>MCC + MNC codes</w:t></w:r></w:p></w:tc></w:tr>
+<w:tr><w:tc><w:tcPr><w:vMerge w:val="restart"/></w:tcPr><w:p><w:r><w:t>Shared</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>901 01</w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+</w:body></w:document>
